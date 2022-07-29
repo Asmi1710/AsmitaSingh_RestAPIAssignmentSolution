@@ -71,4 +71,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 			return employeeRepository.findAll(Sort.by(order, "firstName"));
 		}
 
+		// this method is used to update the existing employee
+		@Override
+		public String updateExistingEmployee(Employee employee) {
+			boolean exists = employeeRepository.existsById(employee.getId());
+			if (exists) {
+				employeeRepository.saveAndFlush(employee);
+				return "Employee record updated";
+			} else
+				throw new RuntimeException("The id: " + employee.getId() + " you're trying to update is not present");
+		}
 }

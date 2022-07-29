@@ -65,8 +65,7 @@ public class EmployeeWebSecurityConfigurerAdapter extends WebSecurityConfigurerA
 			protected void configure(HttpSecurity http) throws Exception {
 				
 				http.authorizeRequests()
-				.antMatchers("/employee/addEmployee", "/h2-console/**", "/user/addNewUser",
-						"​/role/addNewRole")
+				.antMatchers("/employee/addEmployee", "/h2-console/**")
 				.hasAuthority("ADMIN")
 				.antMatchers("/", "/login", "/employees/**", "/role/**","/users/**","/employee/deleteEmployee","/employee/updateEmployee",
 						"/employee/getEmployeeById")

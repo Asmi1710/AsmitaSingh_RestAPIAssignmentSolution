@@ -25,6 +25,9 @@ public class Role {
 	public Integer getId() {
 		return id;
 	}
+	public Role() {
+		super();
+	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -32,6 +35,12 @@ public class Role {
 		return name;
 	}
 	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Role(String name) {
+		super();
+	
 		this.name = name;
 	}
 	

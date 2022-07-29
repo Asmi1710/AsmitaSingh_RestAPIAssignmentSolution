@@ -9,7 +9,7 @@ import com.greatlearning.employeemanagement.entity.Users;
 //We don't create any implementation class but Spring Boot takes the responsibility to 
 //dynamically create the class for StudentRepository during runtime
 @Repository
-public interface UsersRepository extends JpaRepository<Users, Long>{
+public interface UsersRepository extends JpaRepository<Users, Integer>{
 
 	@Query("SELECT u FROM Users u WHERE u.username = ?1")
 	Users getUserByUsername(String username);

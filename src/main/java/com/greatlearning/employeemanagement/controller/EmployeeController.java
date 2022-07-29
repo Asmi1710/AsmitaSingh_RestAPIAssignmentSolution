@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.employeemanagement.entity.Employee;
@@ -35,27 +36,13 @@ public class EmployeeController {
 }
 	
 	@DeleteMapping("/deleteEmployee")
-	public String deleteEmployee(Integer id) {
+	public String deleteEmployee(@RequestParam("id") Integer id) {
 		return employeeService.deleteById(id);
 	}
 	
 	@PutMapping("/updateEmployee")
-	public Employee updateEmployees(int id, String firstName, String lastName, String email) {
-		
-		if(employeeRepository.findById(id).isPresent()) {
-			Employee existingEmployee = employeeRepository.findById(id).get();
-			
-			existingEmployee.setFirstName(firstName);
-			existingEmployee.setLastName(lastName);
-			existingEmployee.setEmail(email);
-			
-			Employee updatedEmployee = employeeRepository.save(existingEmployee);
-			
-			return new Employee(updatedEmployee.getId(), updatedEmployee.getFirstName(), updatedEmployee.getLastName(),
-					updatedEmployee.getEmail());
-		}else {
-			throw new RuntimeException("There is no Employee present with the id "+ id);
-		}
+	public String updateExistingEmployee(@RequestBody Employee employee) {
+		return employeeService.updateExistingEmployee(employee);
 	}
 	
 	

@@ -19,4 +19,6 @@ public interface EmployeeService {
 	List<Employee> employeesByFirstName (String firstName);
 	
 	List<Employee> sortAll(Direction order);
+	
+	String updateExistingEmployee(Employee employee); 
 }

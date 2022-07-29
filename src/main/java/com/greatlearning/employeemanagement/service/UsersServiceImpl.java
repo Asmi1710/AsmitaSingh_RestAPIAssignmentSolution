@@ -3,6 +3,7 @@ package com.greatlearning.employeemanagement.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.greatlearning.employeemanagement.entity.Users;
@@ -23,6 +24,9 @@ public class UsersServiceImpl implements UsersService  {
 	// this method adds new users to the database
 	@Override
 	public String addUser(Users newUser) {
+		
+		String password= newUser.getPassword();
+		newUser.setPassword(new BCryptPasswordEncoder().encode(password));
 		 Users user = usersRepository.save(newUser);
 	     
 	     return "User "+ user+ " saved to the Users DB";

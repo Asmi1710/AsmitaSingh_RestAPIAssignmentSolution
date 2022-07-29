@@ -25,7 +25,7 @@ public class Users {
 	@Id
 	@GeneratedValue
 	@Column(name = "user_id")
-	private Long id;
+	private int id;
 	
 	@Column
 	private String username;
@@ -41,10 +41,10 @@ public class Users {
 	private List<Role > roles= new ArrayList<>();
 	
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUsername() {
